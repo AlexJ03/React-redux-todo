@@ -1,5 +1,5 @@
 import React from "react";
 
-export interface IButtonNavProps {
+export interface IChildrenProps {
     children: React.ReactNode;
 }
