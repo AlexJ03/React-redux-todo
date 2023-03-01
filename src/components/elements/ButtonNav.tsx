@@ -2,10 +2,10 @@ import { Button } from "@mui/material";
 import { FC } from "react";
 import { IChildrenProps } from "../../types";
 
-const ButtonNav: FC<IChildrenProps> = ({ children}) => {
+const ButtonNav: FC<IChildrenProps> = ({ children, onClick}) => {
 
     return (
-        <Button variant="outlined" sx={ { borderColor: "white", color: "white", "&:hover": {opacity: "0.9", borderColor: "white"} } }>{children}</Button>
+        <Button onClick={onClick} variant="outlined" sx={ { borderColor: "white", color: "white", "&:hover": {opacity: "0.9", borderColor: "white"} } }>{ children }</Button>
     )
 }
 
