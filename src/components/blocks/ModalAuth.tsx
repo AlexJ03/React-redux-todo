@@ -4,10 +4,14 @@ import TabPanel from "./TabPanel";
 import {modalAuthStyle} from "../../styles";
 import {useAppDispatch, useAppSelector} from "../../app/hooks";
 import {closeModalAuth} from "../../features/ModalAuthSlice";
+import {createUser, signIn} from "../../firebase";
+import {useNavigate} from "react-router-dom";
 
 const ModalAuth = () => {
     const modalAuth = useAppSelector(state => state.modalAuth);
     const dispatch = useAppDispatch();
+
+    const navigate = useNavigate();
 
     const [value, setValue] = React.useState(modalAuth.tab);
 
@@ -24,9 +28,31 @@ const ModalAuth = () => {
         setValue(newValue);
     };
 
-    const register = () => {};
+    const register = async () => {
+        const { email, password } = dataUser;
 
-    const login = () => {};
+        if ((email.length > 0) && (password.length > 0)) {
+            await createUser(email, password);
+            navigate("/homepage");
+        } else {
+            alert("Error register");
+        }
+
+        dispatch(closeModalAuth());
+    };
+
+    const login = async () => {
+        const { email, password } = dataUser;
+
+        if ((email.length > 0) && (password.length > 0)) {
+            await signIn(email, password);
+            navigate("/homepage");
+        } else {
+            alert("Error login");
+        }
+
+        dispatch(closeModalAuth());
+    };
 
     return (
         <Modal

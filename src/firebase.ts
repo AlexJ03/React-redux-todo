@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { getFirestore, setDoc, doc } from "firebase/firestore";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -14,3 +14,43 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
+
+const addUserFirestore = async (email: string, uid: string) => {
+    await setDoc(doc(db, "users", email), {
+        email, uid
+    });
+};
+
+export const createUser = async (email: string, password: string) => {
+    createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            const { uid } = user;
+
+            addUserFirestore(email, uid);
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+
+            alert(`Error: ${errorMessage}, code: ${errorCode}`);
+        });
+};
+
+export const signIn = async (email: string, password: string) => {
+    signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            const user = userCredential.user;
+
+            console.log(user);
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+
+            alert(`Error: ${errorMessage}, code: ${errorCode}`);
+        });
+};
+
+
+
