@@ -1,4 +1,6 @@
 import React from "react";
+import {OverridableComponent} from "@mui/material/OverridableComponent";
+import {SvgIconTypeMap} from "@mui/material";
 
 export interface IChildrenProps {
     children: React.ReactNode;
@@ -18,4 +20,9 @@ export interface IModalAuth {
 export interface IUserAuth {
     email: string | null;
     uid: string | null;
+}
+
+export interface IControllerBtnItems {
+    name: string;
+    Icon: OverridableComponent<SvgIconTypeMap<{}, "svg">> & { muiName: string; };
 }
