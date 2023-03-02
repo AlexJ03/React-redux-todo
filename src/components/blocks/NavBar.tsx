@@ -1,11 +1,14 @@
 import { Box, Container } from "@mui/material";
 import { red } from '@mui/material/colors';
 import ButtonNav from "../elements/ButtonNav";
-import {useAppDispatch, useAppSelector} from "../../app/hooks";
+import {useAppDispatch} from "../../app/hooks";
 import { openModalAuth } from "../../features/ModalAuthSlice";
+import {auth, getCurrentAuthUser} from "../../firebase";
+import {deleteUser} from "../../features/UserAuthSlice";
 
 const NavBar = () => {
     const dispatch = useAppDispatch();
+    const currentUser = getCurrentAuthUser();
 
     return (
         <>
@@ -13,8 +16,13 @@ const NavBar = () => {
                 <Container sx={ { maxWidth: "100%", color: "white", display: "flex", justifyContent: "space-between", alignItems: "center" } }>
                     <h1>TODO</h1>
                     <Box>
-                        <ButtonNav onClick={() => dispatch(openModalAuth(0))}>Зарегистрироваться</ButtonNav>
-                        <ButtonNav onClick={() => dispatch(openModalAuth(1))}>Войти</ButtonNav>
+                        {!currentUser?.email ?
+                            <>
+                                <ButtonNav onClick={() => dispatch(openModalAuth(0))}>Зарегистрироваться</ButtonNav>
+                                <ButtonNav onClick={() => dispatch(openModalAuth(1))}>Войти</ButtonNav>
+                            </>
+                            : <ButtonNav onClick={() => auth.signOut().then(() => dispatch(deleteUser()))}>Выйти</ButtonNav>
+                        }
                     </Box>
                 </Container>
             </Box>

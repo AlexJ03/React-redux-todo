@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, setDoc, doc } from "firebase/firestore";
+import { getFirestore, setDoc, doc, getDoc } from "firebase/firestore";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 const firebaseConfig = {
@@ -41,8 +41,6 @@ export const signIn = async (email: string, password: string) => {
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             const user = userCredential.user;
-
-            console.log(user);
         })
         .catch((error) => {
             const errorCode = error.code;
@@ -52,5 +50,13 @@ export const signIn = async (email: string, password: string) => {
         });
 };
 
+export const getCurrentAuthUser = () => {
+    if (auth.currentUser) {
+        const { email, uid } = auth.currentUser;
+        return { email, uid };
+    } else {
+        return null;
+    }
+};
 
 

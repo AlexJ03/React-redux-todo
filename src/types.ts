@@ -14,3 +14,8 @@ export interface IModalAuth {
     open: boolean;
     tab: number;
 }
+
+export interface IUserAuth {
+    email: string | null;
+    uid: string | null;
+}
