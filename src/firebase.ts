@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, setDoc, doc, getDoc } from "firebase/firestore";
+import { getFirestore, setDoc, doc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {ITask} from "./types";
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -56,6 +57,34 @@ export const getCurrentAuthUser = () => {
         return { email, uid };
     } else {
         return null;
+    }
+};
+
+export const checkTasksFirestore = async (userEmail: string) => {
+    const currentUserRef = doc(db, "users", userEmail);
+    const docSnap = await getDoc(currentUserRef);
+
+    if (docSnap.exists()) {
+        const userData = docSnap.data();
+
+        if (userData.tasks && userData.tasks.length > 0) {
+            return true
+        }
+    }
+
+    return false;
+};
+
+export const addTaskFirestore = async (userEmail: string, task: ITask) => {
+    const currentUserRef = doc(db, "users", userEmail);
+    const checkTasks = await checkTasksFirestore(userEmail);
+
+    if (checkTasks) {
+        await updateDoc(currentUserRef, {
+            tasks: arrayUnion(task)
+        });
+    } else {
+        await setDoc(currentUserRef, {tasks: [task]}, { merge: true });
     }
 };
 
