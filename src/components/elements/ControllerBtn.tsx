@@ -1,4 +1,3 @@
-import Box from '@mui/material/Box';
 import SpeedDial from '@mui/material/SpeedDial';
 import SpeedDialIcon from '@mui/material/SpeedDialIcon';
 import SpeedDialAction from '@mui/material/SpeedDialAction';
@@ -23,10 +22,9 @@ const ControllerBtn = () => {
     };
 
     return (
-        <Box sx={{ height: "100%", transform: 'translateZ(0px)', flexGrow: 1 }}>
             <SpeedDial
                 ariaLabel="SpeedDial basic example"
-                sx={{ position: 'absolute', bottom: 30, right: 150 }}
+                sx={{ position: 'absolute', bottom: 100, right: 150 }}
                 icon={<SpeedDialIcon />}
             >
                 {controllerBtnItems.map(({name, Icon, nameFunc}) => (
@@ -38,7 +36,6 @@ const ControllerBtn = () => {
                     />
                 ))}
             </SpeedDial>
-        </Box>
     );
 }
 

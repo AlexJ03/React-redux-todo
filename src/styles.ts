@@ -1,4 +1,4 @@
-export const modalAuthStyle = {
+export const styles_modal_auth = {
     position: 'absolute' as 'absolute',
     top: '35%',
     left: '50%',
@@ -19,3 +19,14 @@ export const styles_modal_create_task = {
     p: 4,
     borderRadius: "10px"
 };
+
+export const styles_task = {
+    width: "500px",
+    height: "100px",
+    border: "1px solid #ccc",
+    borderRadius: "10px",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    px: "10px"
+}

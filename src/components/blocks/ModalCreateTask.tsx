@@ -8,6 +8,7 @@ import {Button, TextField} from "@mui/material";
 import {useState} from "react";
 import {addTaskFirestore, getCurrentAuthUser} from "../../firebase";
 import {ITask} from "../../types";
+import { v4 as uuidv4 } from 'uuid';
 
 const ModalCreateTask = () => {
     const modalCreateTask = useAppSelector(state => state.modalTask.open);
@@ -20,7 +21,7 @@ const ModalCreateTask = () => {
             const newTask: ITask = {
                 title: task,
                 group: null,
-                id: task,
+                id: uuidv4(),
             };
             const currentUser = getCurrentAuthUser();
             await addTaskFirestore(currentUser?.email!, newTask);

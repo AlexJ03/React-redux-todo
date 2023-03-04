@@ -1,7 +1,7 @@
 import {Box, Modal, Tabs, Tab, TextField, Button} from "@mui/material";
 import React from "react";
 import TabPanel from "./TabPanel";
-import {modalAuthStyle} from "../../styles";
+import {styles_modal_auth} from "../../styles";
 import {useAppDispatch, useAppSelector} from "../../app/hooks";
 import {closeModalAuth} from "../../features/ModalAuthSlice";
 import {createUser, signIn} from "../../firebase";
@@ -56,7 +56,7 @@ const ModalAuth = () => {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
-            <Box sx={modalAuthStyle}>
+            <Box sx={styles_modal_auth}>
 
                 <Box sx={ { width: "100%" } }>
 

@@ -8,6 +8,8 @@ import {auth} from "./firebase";
 import {onAuthStateChanged} from "firebase/auth";
 import {useAppDispatch} from "./app/hooks";
 import {setUser} from "./features/UserAuthSlice";
+import ControllerBtn from "./components/elements/ControllerBtn";
+import {Box} from "@mui/material";
 
 const App = () => {
     const dispatch = useAppDispatch();
