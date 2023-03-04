@@ -5,6 +5,7 @@ import TasksMap from "../components/blocks/TasksMap";
 import ButtonsNavTasksGroups from "../components/blocks/ButtonsNavTasksGroups";
 import { useAppSelector } from "../app/hooks";
 import ModalCreateGroup from "../components/blocks/ModalCreateGroup";
+import GroupsMap from "../components/blocks/GroupsMap";
 
 const HomePage = () => {
 
@@ -17,7 +18,7 @@ const HomePage = () => {
                     <Box>
                         <Stack direction="column" spacing={4}>
                             <ButtonsNavTasksGroups />
-                            { btnTasksGroups === 0 ? <TasksMap/> : <p>Группы</p> }
+                            { btnTasksGroups === 0 ? <TasksMap /> : <GroupsMap /> }
                         </Stack>
                     </Box>
                 </Container>

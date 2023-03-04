@@ -147,3 +147,13 @@ export const createGroupFirestore = async (userEmail: string, group: IGroup) => 
         await setDoc(currentUserRef, {groups: [group]}, { merge: true });
     }
 }
+
+export const getGroupsRealTime = (userEmail: string, setGroups: React.Dispatch<IGroup[] | null>) => {
+    onSnapshot(doc(db, "users", userEmail), (doc) => {
+
+        if (doc.data()?.groups) {
+            setGroups(doc.data()?.groups);
+        }
+
+    })
+};
