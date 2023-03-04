@@ -3,7 +3,7 @@ import { getTasksRealTime } from "../../firebase";
 import { useAppSelector } from "../../app/hooks";
 import { ITask } from "../../types";
 import Task from "../elements/Task";
-import { Stack } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 
 const TasksMap = () => {
     const [tasks, setTasks] = useState<ITask[] | null>(null);
@@ -23,7 +23,7 @@ const TasksMap = () => {
                         (tasks !== null && tasks.length > 0) ? tasks.map(({title, group, id}: ITask) => <Task title={title}
                                                                                                        group={group} id={id}
                                                                                                        key={id}/>) :
-                            <p>Задач нет</p>
+                            <Typography sx={ { textAlign: "center" } }>Задач нет</Typography>
                     }
             </Stack>
             : <p>Загрузка</p>

@@ -38,3 +38,8 @@ export interface ITask {
     group: string | null;
     id: string;
 }
+
+export interface IButtonNavTasksGroups {
+    label: string;
+    Icon: OverridableComponent<SvgIconTypeMap<{}, "svg">> & { muiName: string; };
+}
