@@ -5,6 +5,7 @@ import {controllerBtnItems} from "../../data";
 import {useAppDispatch} from "../../app/hooks";
 import {openModalCreateTask} from "../../features/ModalTaskSlice";
 import {ControllerBtnNameFunc} from "../../types";
+import {openModalCreateGroup} from "../../features/ModalCreateGroupSlice";
 
 const ControllerBtn = () => {
     const dispatch = useAppDispatch();
@@ -15,6 +16,7 @@ const ControllerBtn = () => {
                 dispatch(openModalCreateTask());
                 break;
             case "createGroup":
+                dispatch(openModalCreateGroup());
                 break;
             default:
                 break;

@@ -43,3 +43,9 @@ export interface IButtonNavTasksGroups {
     label: string;
     Icon: OverridableComponent<SvgIconTypeMap<{}, "svg">> & { muiName: string; };
 }
+
+export interface IGroup {
+    title: string;
+    tasks: ITask[] | null;
+    id: string;
+}

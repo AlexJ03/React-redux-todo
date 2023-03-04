@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import {getFirestore, setDoc, doc, getDoc, updateDoc, arrayUnion, onSnapshot} from "firebase/firestore";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import {ITask} from "./types";
+import {IGroup, ITask} from "./types";
 import React from "react";
 
 const firebaseConfig = {
@@ -119,3 +119,31 @@ export const getTasksRealTime = (userEmail: string, setTasks: React.Dispatch<ITa
     })
 };
 
+export const checkGroupsFirestore = async (userEmail: string) => {
+    const currentUserRef = doc(db, "users", userEmail);
+    const docSnap = await getDoc(currentUserRef);
+
+    if (docSnap.exists()) {
+        const userData = docSnap.data();
+
+        if (userData.groups && userData.groups.length > 0) {
+            return true
+        }
+    }
+
+    return false;
+};
+
+
+export const createGroupFirestore = async (userEmail: string, group: IGroup) => {
+    const currentUserRef = doc(db, "users", userEmail);
+    const checkGroups = await checkGroupsFirestore(userEmail);
+
+    if (checkGroups) {
+        await updateDoc(currentUserRef, {
+            groups: arrayUnion(group)
+        });
+    } else {
+        await setDoc(currentUserRef, {groups: [group]}, { merge: true });
+    }
+}

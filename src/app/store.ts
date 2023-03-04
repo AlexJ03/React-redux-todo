@@ -2,14 +2,16 @@ import { configureStore } from '@reduxjs/toolkit';
 import modalAuthSlice from "../features/ModalAuthSlice";
 import userAuthSlice from "../features/UserAuthSlice";
 import modalTaskSlice from "../features/ModalTaskSlice";
-import BtnTasksGroupsSlice from "../features/BtnTasksGroupsSlice";
+import btnTasksGroupsSlice from "../features/BtnTasksGroupsSlice";
+import modalCreateGroupSlice from "../features/ModalCreateGroupSlice";
 
 export const store = configureStore({
   reducer: {
     modalAuth: modalAuthSlice,
     userAuth: userAuthSlice,
     modalTask: modalTaskSlice,
-    btnTaskGroup: BtnTasksGroupsSlice,
+    btnTaskGroup: btnTasksGroupsSlice,
+    modalCreateGroup: modalCreateGroupSlice
   },
 });
 

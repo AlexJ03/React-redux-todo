@@ -4,6 +4,7 @@ import { Box, Container, Stack } from "@mui/material";
 import TasksMap from "../components/blocks/TasksMap";
 import ButtonsNavTasksGroups from "../components/blocks/ButtonsNavTasksGroups";
 import { useAppSelector } from "../app/hooks";
+import ModalCreateGroup from "../components/blocks/ModalCreateGroup";
 
 const HomePage = () => {
 
@@ -21,8 +22,10 @@ const HomePage = () => {
                     </Box>
                 </Container>
             </Box>
+
+            <ModalCreateGroup />
             <ModalCreateTask />
-                <ControllerBtn />
+            <ControllerBtn />
         </>
     )
 }
