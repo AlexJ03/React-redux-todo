@@ -157,3 +157,20 @@ export const getGroupsRealTime = (userEmail: string, setGroups: React.Dispatch<I
 
     })
 };
+
+export const updateGroupsFirestore = async (userEmail: string, groups: IGroup[]) => {
+    const userRef = doc(db, "users", userEmail);
+
+    await setDoc(userRef, {groups: groups}, { merge: true });
+};
+
+export const getGroups = async (userEmail: string) => {
+    const userRef = doc(db, "users", userEmail);
+    const docSnap = await getDoc(userRef);
+
+    if (docSnap.exists()) {
+        return docSnap.data();
+    } else {
+        console.log("No such document!");
+    }
+}

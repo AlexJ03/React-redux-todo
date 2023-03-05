@@ -8,6 +8,7 @@ import { IGroup, ITask } from "../../types";
 import Task from "./Task";
 
 const AccordionGroups: FC<IGroup> = ({ id, title, tasks }) => {
+
     return (
             <Accordion>
                 <AccordionSummary
@@ -18,7 +19,7 @@ const AccordionGroups: FC<IGroup> = ({ id, title, tasks }) => {
                     <Typography>{title}</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    { tasks ? tasks.map((task: ITask) => <Task group={task.group} title={task.title} id={task.id} key={task.id} />) : <p>Задач у этой группы нет</p> }
+                    { (tasks && tasks.length > 0) ? tasks.map((task: ITask) => <Task group={task.group} title={task.title} id={task.id} key={task.id} />) : <Typography sx={ { textAlign: "center" } }>Задач у этой группы нет</Typography> }
                 </AccordionDetails>
             </Accordion>
     );

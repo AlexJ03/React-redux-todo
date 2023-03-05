@@ -49,3 +49,7 @@ export interface IGroup {
     tasks: ITask[] | null;
     id: string;
 }
+
+export interface ITitleGroup {
+    title: string | null;
+}

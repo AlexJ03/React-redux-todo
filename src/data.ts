@@ -1,4 +1,4 @@
-import {IButtonNavTasksGroups, IControllerBtnItems} from "./types";
+import { IButtonNavTasksGroups, IControllerBtnItems } from "./types";
 import AddTaskIcon from '@mui/icons-material/AddTask';
 import WorkspacesIcon from '@mui/icons-material/Workspaces';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';

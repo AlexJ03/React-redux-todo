@@ -4,6 +4,7 @@ import userAuthSlice from "../features/UserAuthSlice";
 import modalTaskSlice from "../features/ModalTaskSlice";
 import btnTasksGroupsSlice from "../features/BtnTasksGroupsSlice";
 import modalCreateGroupSlice from "../features/ModalCreateGroupSlice";
+import titleGroupSlice from "../features/TitleGroupSlice";
 
 export const store = configureStore({
   reducer: {
@@ -11,7 +12,8 @@ export const store = configureStore({
     userAuth: userAuthSlice,
     modalTask: modalTaskSlice,
     btnTaskGroup: btnTasksGroupsSlice,
-    modalCreateGroup: modalCreateGroupSlice
+    modalCreateGroup: modalCreateGroupSlice,
+    titleGroup: titleGroupSlice
   },
 });
 
