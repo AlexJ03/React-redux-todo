@@ -6,9 +6,9 @@ import ButtonsNavTasksGroups from "../components/blocks/ButtonsNavTasksGroups";
 import { useAppSelector } from "../app/hooks";
 import ModalCreateGroup from "../components/blocks/ModalCreateGroup";
 import GroupsMap from "../components/blocks/GroupsMap";
+import ModalSettingsGroups from "../components/blocks/ModalSettingsGroups";
 
 const HomePage = () => {
-
     let btnTasksGroups = useAppSelector(state => state.btnTaskGroup.tab);
 
     return (
@@ -24,6 +24,7 @@ const HomePage = () => {
                 </Container>
             </Box>
 
+            <ModalSettingsGroups />
             <ModalCreateGroup />
             <ModalCreateTask />
             <ControllerBtn />

@@ -6,6 +6,7 @@ import {useAppDispatch} from "../../app/hooks";
 import {openModalCreateTask} from "../../features/ModalTaskSlice";
 import {ControllerBtnNameFunc} from "../../types";
 import {openModalCreateGroup} from "../../features/ModalCreateGroupSlice";
+import {openModalSettingsGroups} from "../../features/ModalSettingsGroupsSlice";
 
 const ControllerBtn = () => {
     const dispatch = useAppDispatch();
@@ -17,6 +18,9 @@ const ControllerBtn = () => {
                 break;
             case "createGroup":
                 dispatch(openModalCreateGroup());
+                break;
+            case "settingsGroups":
+                dispatch(openModalSettingsGroups());
                 break;
             default:
                 break;

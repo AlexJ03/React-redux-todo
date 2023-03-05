@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import {getFirestore, setDoc, doc, getDoc, updateDoc, arrayUnion, onSnapshot} from "firebase/firestore";
+import {getFirestore, setDoc, doc, getDoc, updateDoc, arrayUnion, onSnapshot, deleteField} from "firebase/firestore";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import {IGroup, ITask} from "./types";
 import React from "react";
@@ -174,3 +174,9 @@ export const getGroups = async (userEmail: string) => {
         console.log("No such document!");
     }
 }
+
+export const updateTasksFirestore = async (userEmail: string, tasks: ITask[]) => {
+    const userRef = doc(db, "users", userEmail);
+
+    await setDoc(userRef, {tasks: tasks}, { merge: true });
+};
