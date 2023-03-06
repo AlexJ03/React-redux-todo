@@ -23,6 +23,12 @@ const ModalSettingsGroups = () => {
         }
     }, [userEmail])
 
+    useEffect(() => {
+        if (groups && groups.length === 0) {
+            dispatch(closeModalSettingsGroups());
+        }
+    }, [groups])
+
     return (
         <div>
             <Modal
