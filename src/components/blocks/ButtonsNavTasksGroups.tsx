@@ -22,7 +22,7 @@ const ButtonsNavTasksGroups = () => {
                     dispatch(setTab(newValue));
                 }}
             >
-                { buttonsNavGroups.map(({ label, Icon }) => <BottomNavigationAction label={label} icon={<Icon />} />) }
+                { buttonsNavGroups.map(({ label, Icon }) => <BottomNavigationAction key={label} label={label} icon={<Icon />} />) }
             </BottomNavigation>
         </Box>
     );

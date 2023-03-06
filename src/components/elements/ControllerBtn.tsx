@@ -17,8 +17,10 @@ const ControllerBtn = () => {
     const email = useAppSelector(state => state.userAuth.email);
 
     useEffect(() => {
-        getGroupsRealTime(email!, setGroups);
-    });
+        if (email) {
+            getGroupsRealTime(email!, setGroups);
+        }
+    }, [email]);
 
     const controllerFunc = (nameFunc: ControllerBtnNameFunc) => {
         switch (nameFunc) {
@@ -43,7 +45,6 @@ const ControllerBtn = () => {
                 icon={<SpeedDialIcon />}
             >
                 {(groups && groups.length > 0) ? <SpeedDialAction
-                    key="Управление группами"
                     icon={<SettingsInputComponentIcon/>}
                     tooltipTitle="Управление группами"
                     onClick={() => controllerFunc("settingsGroups")}

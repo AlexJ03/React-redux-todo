@@ -11,9 +11,12 @@ const TitleGroupSlice = createSlice({
     reducers: {
         setTitleGroup: (state, action: PayloadAction<string>) => {
             state.title = action.payload;
+        },
+        removeTitleGroup: (state) => {
+            state.title = null;
         }
     }
 });
 
-export const { setTitleGroup } = TitleGroupSlice.actions;
+export const { setTitleGroup, removeTitleGroup } = TitleGroupSlice.actions;
 export default TitleGroupSlice.reducer;

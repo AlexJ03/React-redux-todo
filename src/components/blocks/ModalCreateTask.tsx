@@ -11,6 +11,7 @@ import {IGroup, ITask} from "../../types";
 import { v4 as uuidv4 } from 'uuid';
 import MenuGroups from "../elements/MenuGroups";
 import {updateGroups, updateTasksInGroup} from "../../functions";
+import {removeTitleGroup} from "../../features/TitleGroupSlice";
 
 const ModalCreateTask = () => {
     const modalCreateTask = useAppSelector(state => state.modalTask.open);
@@ -45,6 +46,7 @@ const ModalCreateTask = () => {
 
         setTask("");
         dispatch(closeModalCreateTask());
+        dispatch(removeTitleGroup());
     };
 
     return (
