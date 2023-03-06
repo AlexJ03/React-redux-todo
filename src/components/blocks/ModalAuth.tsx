@@ -34,6 +34,7 @@ const ModalAuth = () => {
             alert("Error register");
         }
 
+        setDataUser({email: "", password: ""});
         dispatch(closeModalAuth());
     };
 
@@ -46,6 +47,7 @@ const ModalAuth = () => {
             alert("Error login");
         }
 
+        setDataUser({email: "", password: ""});
         dispatch(closeModalAuth());
     };
 

@@ -26,6 +26,9 @@ const ModalCreateGroup = () => {
             }
             await createGroupFirestore(userData.email!, newGroup);
         }
+
+        setGroup("");
+        dispatch(closeModalCreateGroup());
     };
 
     return (

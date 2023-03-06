@@ -42,6 +42,9 @@ const ModalCreateTask = () => {
                 await updateGroupsFirestore(email!, newGroups);
             }
         }
+
+        setTask("");
+        dispatch(closeModalCreateTask());
     };
 
     return (
