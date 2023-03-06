@@ -5,8 +5,8 @@ import {useAppDispatch, useAppSelector} from "../../app/hooks";
 import {closeModalCreateTask} from "../../features/ModalTaskSlice";
 import {styles_modal_create_task} from "../../styles";
 import {Button, TextField} from "@mui/material";
-import {useState} from "react";
-import {addTaskFirestore, getGroups, updateGroupsFirestore} from "../../firebase";
+import {useEffect, useState} from "react";
+import {addTaskFirestore, getGroups, getGroupsRealTime, updateGroupsFirestore} from "../../firebase";
 import {IGroup, ITask} from "../../types";
 import { v4 as uuidv4 } from 'uuid';
 import MenuGroups from "../elements/MenuGroups";
@@ -16,10 +16,17 @@ import {removeTitleGroup} from "../../features/TitleGroupSlice";
 const ModalCreateTask = () => {
     const modalCreateTask = useAppSelector(state => state.modalTask.open);
     const email = useAppSelector(state => state.userAuth.email);
+    const titleGroup = useAppSelector(state => state.titleGroup.title);
     const dispatch = useAppDispatch();
 
     const [task, setTask] = useState("");
-    let titleGroup = useAppSelector(state => state.titleGroup.title);
+    const [groups, setGroups] = useState<IGroup[] | null>(null);
+
+    useEffect(() => {
+        if (email) {
+            getGroupsRealTime(email!, setGroups);
+        }
+    }, [email])
 
     const createTask = async () => {
         if (task.length > 0) {
@@ -62,7 +69,7 @@ const ModalCreateTask = () => {
                         Создать задачу
                     </Typography>
                     <TextField value={task} onChange={(e) => setTask(e.target.value)} sx={ { width: "100%", marginTop: "20px" } } variant="outlined" label="Название задачи" />
-                    <MenuGroups />
+                    {(groups && groups.length > 0) ? <MenuGroups/> : null}
                     <Button onClick={createTask}>Создать</Button>
                 </Box>
             </Modal>

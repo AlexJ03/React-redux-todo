@@ -9,7 +9,7 @@ const TitleGroupSlice = createSlice({
     name: "titleGroup",
     initialState,
     reducers: {
-        setTitleGroup: (state, action: PayloadAction<string>) => {
+        setTitleGroup: (state, action: PayloadAction<string | null>) => {
             state.title = action.payload;
         },
         removeTitleGroup: (state) => {

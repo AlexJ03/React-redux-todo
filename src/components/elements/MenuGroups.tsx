@@ -61,6 +61,12 @@ const MenuGroups = () => {
                         { title }
                     </MenuItem>
                 ))}
+                <MenuItem onClick={() => {
+                    dispatch(setTitleGroup(null));
+                    handleClose();
+                }}>
+                    Без группы
+                </MenuItem>
             </Menu>
         </div>
     );
