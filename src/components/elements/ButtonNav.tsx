@@ -1,11 +1,23 @@
-import { Button } from "@mui/material";
+import {Button, ButtonProps, styled} from "@mui/material";
 import { FC } from "react";
 import { IChildrenProps } from "../../types";
+import {red} from "@mui/material/colors";
 
 const ButtonNav: FC<IChildrenProps> = ({ children, onClick}) => {
 
+    const ButtonNav = styled(Button)<ButtonProps>(({ theme }) => ({
+        color: "white",
+        borderColor: "white",
+        backgroundColor: "transparent",
+        '&:hover': {
+            backgroundColor: "white",
+            color: red[600],
+            borderColor: "white"
+        },
+    }));
+
     return (
-        <Button onClick={onClick} variant="outlined" sx={ { borderColor: "white", color: "white", "&:hover": {opacity: "0.9", borderColor: "white"} } }>{ children }</Button>
+        <ButtonNav onClick={onClick} variant="outlined">{ children }</ButtonNav>
     )
 }
 

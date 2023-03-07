@@ -62,22 +62,25 @@ const ModalAuth = () => {
 
                 <Box sx={ { width: "100%" } }>
 
-                    <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                        <Tab label="Зарегистрироваться" />
+                    <Tabs textColor="primary" indicatorColor="primary" value={value} onChange={handleChange} aria-label="basic tabs example">
+                        <Tab label="Регистрация" />
                         <Tab label="Вход" />
                     </Tabs>
 
                     <TabPanel value={value} index={0}>
-                        <TextField value={dataUser.email} onChange={(e) => setDataUser({...dataUser, email: e.target.value})} label="Email" variant="outlined" />
-                        <TextField value={dataUser.password} onChange={(e) => setDataUser({...dataUser, password: e.target.value})} label="Пароль" variant="outlined" />
-                        
-                        <Button onClick={register}>Зарегистрироваться</Button>
+                        <Box sx={ { display: { xs: "block", sm: "flex" }, justifyContent: "space-between", alignItems: "center" } }>
+                            <TextField sx={ { width: "100%", margin: { xs: "0 0 5px 0", sm: "0 10px 0 0", md: "0 20px 0 0" } } } value={dataUser.email} onChange={(e) => setDataUser({...dataUser, email: e.target.value})} label="Email" variant="outlined" />
+                            <TextField sx={ { width: "100%" } } value={dataUser.password} onChange={(e) => setDataUser({...dataUser, password: e.target.value})} label="Пароль" variant="outlined" />
+                        </Box>
+
+                        <Button variant="contained" sx={ { width: "100%", marginTop: "20px" } } onClick={register}>Зарегистрироваться</Button>
                     </TabPanel>
                     <TabPanel value={value} index={1}>
-                        <TextField value={dataUser.email} onChange={(e) => setDataUser({...dataUser, email: e.target.value})} label="Email" variant="outlined" />
-                        <TextField value={dataUser.password} onChange={(e) => setDataUser({...dataUser, password: e.target.value})} label="Пароль" variant="outlined" />
-
-                        <Button onClick={login}>Войти</Button>
+                        <Box sx={ { display: { xs: "block", sm: "flex" }, justifyContent: "space-between", alignItems: "center" } }>
+                            <TextField sx={ { width: "100%", margin: { xs: "0 0 5px 0", sm: "0 10px 0 0", md: "0 20px 0 0" } } } value={dataUser.email} onChange={(e) => setDataUser({...dataUser, email: e.target.value})} label="Email" variant="outlined" />
+                            <TextField sx={ { width: "100%" } } value={dataUser.password} onChange={(e) => setDataUser({...dataUser, password: e.target.value})} label="Пароль" variant="outlined" />
+                        </Box>
+                        <Button variant="contained" sx={ { width: "100%", marginTop: "20px" } } onClick={login}>Войти</Button>
                     </TabPanel>
 
                 </Box>

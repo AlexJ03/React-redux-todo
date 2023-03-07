@@ -12,4 +12,3 @@ export const buttonsNavGroups: IButtonNavTasksGroups[] = [
     { label: "Мои задачи", Icon: FormatListBulletedIcon },
     { label: "Мои группы", Icon: WorkspacesIcon }
 ];
-

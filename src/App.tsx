@@ -8,6 +8,8 @@ import {auth} from "./firebase";
 import {onAuthStateChanged} from "firebase/auth";
 import {useAppDispatch} from "./app/hooks";
 import {setUser} from "./features/UserAuthSlice";
+import {ThemeProvider} from "@mui/material";
+import {theme} from "./theme";
 
 const App = () => {
     const dispatch = useAppDispatch();
@@ -27,14 +29,14 @@ const App = () => {
     }, []);
 
   return (
-      <>
+      <ThemeProvider theme={theme}>
           <NavBar />
           <Routes>
               <Route path="/" element={ <MainPage /> } />
               <Route path="/homepage" element={ <HomePage /> } />
           </Routes>
           <ModalAuth />
-      </>
+      </ThemeProvider>
   )
 }
 
