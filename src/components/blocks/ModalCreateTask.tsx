@@ -70,7 +70,7 @@ const ModalCreateTask = () => {
                     </Typography>
                     <TextField value={task} onChange={(e) => setTask(e.target.value)} sx={ { width: "100%", marginTop: "20px" } } variant="outlined" label="Название задачи" />
                     {(groups && groups.length > 0) ? <MenuGroups/> : null}
-                    <Button onClick={createTask}>Создать</Button>
+                    <Button variant="contained" sx={ { width: "100%", marginTop: "20px" } } onClick={createTask}>Создать</Button>
                 </Box>
             </Modal>
         </div>

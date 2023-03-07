@@ -19,7 +19,7 @@ const GroupsMap = () => {
         <div>
             {
                 (groups && groups.length > 0) ? groups.map((group: IGroup) => <AccordionGroups id={group.id} key={group.id} title={group.title} tasks={group.tasks} />)
-            : <Typography sx={ { textAlign: "center" } }>Групп нет</Typography>
+            : <Typography sx={ { marginTop: { xs: "35px", sm: "45px", md: "65px", lg: "100px" }, textAlign: "center", fontSize: { xs: "20px", sm: "25px", md: "30px", lg: "40px" } } }>Создайте свою первую группу!</Typography>
             }
         </div>
     )

@@ -41,7 +41,7 @@ const ControllerBtn = () => {
     return (
             <SpeedDial
                 ariaLabel="SpeedDial basic example"
-                sx={{ position: 'absolute', bottom: 100, right: 150 }}
+                sx={{ position: 'fixed', bottom: { xs: 80, sm: 100, md: 150 }, right: { xs: 50, sm: 100, md: 180 } }}
                 icon={<SpeedDialIcon />}
             >
                 {(groups && groups.length > 0) ? <SpeedDialAction

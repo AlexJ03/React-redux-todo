@@ -70,7 +70,7 @@ const ModalAuth = () => {
                     <TabPanel value={value} index={0}>
                         <Box sx={ { display: { xs: "block", sm: "flex" }, justifyContent: "space-between", alignItems: "center" } }>
                             <TextField sx={ { width: "100%", margin: { xs: "0 0 5px 0", sm: "0 10px 0 0", md: "0 20px 0 0" } } } value={dataUser.email} onChange={(e) => setDataUser({...dataUser, email: e.target.value})} label="Email" variant="outlined" />
-                            <TextField sx={ { width: "100%" } } value={dataUser.password} onChange={(e) => setDataUser({...dataUser, password: e.target.value})} label="Пароль" variant="outlined" />
+                            <TextField type="password" sx={ { width: "100%" } } value={dataUser.password} onChange={(e) => setDataUser({...dataUser, password: e.target.value})} label="Пароль" variant="outlined" />
                         </Box>
 
                         <Button variant="contained" sx={ { width: "100%", marginTop: "20px" } } onClick={register}>Зарегистрироваться</Button>
@@ -78,7 +78,7 @@ const ModalAuth = () => {
                     <TabPanel value={value} index={1}>
                         <Box sx={ { display: { xs: "block", sm: "flex" }, justifyContent: "space-between", alignItems: "center" } }>
                             <TextField sx={ { width: "100%", margin: { xs: "0 0 5px 0", sm: "0 10px 0 0", md: "0 20px 0 0" } } } value={dataUser.email} onChange={(e) => setDataUser({...dataUser, email: e.target.value})} label="Email" variant="outlined" />
-                            <TextField sx={ { width: "100%" } } value={dataUser.password} onChange={(e) => setDataUser({...dataUser, password: e.target.value})} label="Пароль" variant="outlined" />
+                            <TextField type="password" sx={ { width: "100%" } } value={dataUser.password} onChange={(e) => setDataUser({...dataUser, password: e.target.value})} label="Пароль" variant="outlined" />
                         </Box>
                         <Button variant="contained" sx={ { width: "100%", marginTop: "20px" } } onClick={login}>Войти</Button>
                     </TabPanel>

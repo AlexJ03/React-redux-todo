@@ -44,7 +44,7 @@ const ModalCreateGroup = () => {
                         Создать группу
                     </Typography>
                     <TextField value={group} onChange={(e) => setGroup(e.target.value)} sx={ { width: "100%", marginTop: "20px" } } variant="outlined" label="Название группы" />
-                    <Button onClick={createGroup}>Создать</Button>
+                    <Button variant="contained" sx={ { width: "100%", marginTop: "20px" } } onClick={createGroup}>Создать</Button>
                 </Box>
             </Modal>
         </div>

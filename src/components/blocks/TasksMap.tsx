@@ -23,7 +23,7 @@ const TasksMap = () => {
                         (tasks !== null && tasks.length > 0) ? tasks.map(({title, group, id}: ITask) => <Task title={title}
                                                                                                        group={group} id={id}
                                                                                                        key={id}/>) :
-                            <Typography sx={ { textAlign: "center" } }>Задач нет</Typography>
+                            <Typography sx={ { marginTop: { xs: "35px", sm: "45px", md: "65px", lg: "100px" }, textAlign: "center", fontSize: { xs: "20px", sm: "25px", md: "30px", lg: "40px" } } }>Создайте свою первую задачу!</Typography>
                     }
             </Stack>
             : <p>Загрузка</p>
