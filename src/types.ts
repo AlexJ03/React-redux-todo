@@ -25,7 +25,7 @@ export interface IUserAuth {
     uid: string | null;
 }
 
-export type ControllerBtnNameFunc = "createGroup" | "createTask" | "settingsGroups";
+export type ControllerBtnNameFunc = "createGroup" | "createTask" | "settingsGroups" | "logout";
 
 export interface IControllerBtnItems {
     name: string;

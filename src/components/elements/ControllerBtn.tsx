@@ -9,7 +9,10 @@ import {openModalCreateGroup} from "../../features/ModalCreateGroupSlice";
 import {openModalSettingsGroups} from "../../features/ModalSettingsGroupsSlice";
 import SettingsInputComponentIcon from '@mui/icons-material/SettingsInputComponent';
 import {useEffect, useState} from "react";
-import {getGroupsRealTime} from "../../firebase";
+import {auth, getGroupsRealTime} from "../../firebase";
+import LogoutIcon from '@mui/icons-material/Logout';
+import { isMobile } from "react-device-detect";
+import {deleteUser} from "../../features/UserAuthSlice";
 
 const ControllerBtn = () => {
     const dispatch = useAppDispatch();
@@ -33,6 +36,9 @@ const ControllerBtn = () => {
             case "settingsGroups":
                 dispatch(openModalSettingsGroups());
                 break;
+            case "logout":
+                auth.signOut().then(() => dispatch(deleteUser()));
+                break;
             default:
                 break;
         }
@@ -44,6 +50,11 @@ const ControllerBtn = () => {
                 sx={{ position: 'fixed', bottom: { xs: 50, sm: 100, md: 150 }, right: { xs: 10, sm: 100, md: 180 } }}
                 icon={<SpeedDialIcon />}
             >
+                {isMobile ? <SpeedDialAction
+                    icon={<LogoutIcon/>}
+                    tooltipTitle="Выйти"
+                    onClick={() => controllerFunc("logout")}
+                /> : null}
                 {(groups && groups.length > 0) ? <SpeedDialAction
                     icon={<SettingsInputComponentIcon/>}
                     tooltipTitle="Управление группами"
