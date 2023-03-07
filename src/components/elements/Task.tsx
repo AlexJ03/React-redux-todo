@@ -1,10 +1,13 @@
-import { Box, Typography, Button } from "@mui/material";
+import {Box, Typography, IconButton} from "@mui/material";
 import { FC } from "react";
 import {IGroup, ITask} from "../../types";
 import { styles_task } from "../../styles";
 import {getGroups, getTasks, updateGroupsFirestore, updateTasks} from "../../firebase";
 import { useAppSelector } from "../../app/hooks";
 import {updateGroups, updateTasksInGroupDelete} from "../../functions";
+import DeleteIcon from '@mui/icons-material/Delete';
+import CheckIcon from '@mui/icons-material/Check';
+import {green, red} from "@mui/material/colors";
 
 const Task: FC<ITask> = ( { title, group, id } ) => {
 
@@ -35,8 +38,12 @@ const Task: FC<ITask> = ( { title, group, id } ) => {
             {group && <Typography sx={{fontSize: "18px", color: "#ccc"}}>{group}</Typography>}
 
             <Box>
-                <Button onClick={deleteTask}>Выполнена</Button>
-                <Button onClick={deleteTask}>Удалить</Button>
+                <IconButton onClick={deleteTask} aria-label="complete">
+                    <CheckIcon sx={ { color: green[600], fontSize: "30px" } } />
+                </IconButton>
+                <IconButton onClick={deleteTask} aria-label="delete">
+                    <DeleteIcon sx={ { color: red[600], fontSize: "30px" } } />
+                </IconButton>
             </Box>
 
         </Box>

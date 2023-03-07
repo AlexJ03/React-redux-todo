@@ -23,7 +23,6 @@ const Group: FC<IGroup> = ( { title, id, tasks } ) => {
     };
 
     return (
-
         <ListItem
             sx={ { width: "100%" } }
             secondaryAction={
